@@ -1,1 +1,10 @@
-远程管理
+git init #初始化 文件为本地仓库
+
+git add. #把所有文件 添加到 缓存区
+
+git commit -m '第一次提交' #从缓存区放到 工作区
+
+#将本地仓库的文件指定远程提交地址
+git remote add origin https://gitee.com/Ljh_aa123/diandeng.git
+
+git push -u origin "master" #文件推送 远程仓库 
