@@ -1,0 +1,69 @@
+git  init   #初始化 文件夹 为本地仓库
+
+git  add .  #把所有文件 添加到 缓存区
+
+git  commit -m '第一次提交'   #从缓存区放到 工作区
+
+# 将本地 仓库的 文件 指定远程提交地址
+git remote add origin https://gitee.com/codeszhong/myproject.git
+
+# 文件推送 远程仓库 
+git push -u origin "master"
+
+遇到分支冲突错误：
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://gitee.com/codeszhong/myproject.git'
+
+解决方案：
+创建新的分支：
+git checkout -b news
+再提交代码：
+git push -u origin "news"
+
+修改完代码 再次提交 
+#提交到缓存区
+git add .  
+
+#提交到 工作区
+git commit -m 'xxxx提交'  
+
+# 提交到指定分支
+git push -u origin "news" 
+
+#下载 远程 仓库的项目 
+git clone   项目路径地址
+
+git diff HEAD -- git01.txt   #查看 修改的内容操作
+
+################版本回退操作#################
+#查看 提交记录 所有的版本
+git log  
+
+#查看 最近三次 git 提交的版本记录 列出所有版本号
+git log -3 --pretty=oneline
+
+#版本回退命令 回到 上一个版本  HEAD^^ 上上个版本  HEAD^^^ 上上上个版本 
+git reset  --hard HEAD^
+
+#如果版本回退 之后 想再回到 当前 或者指定版本 则找到指定版本号 可以回来
+git reset --hard c6797
+
+################文件操作#################
+#本地仓库的文件 如果做了删除操作
+# 前提需要 先 git add 和 git commit 提交到 工作区之后 执行此命令生效
+
+git checkout -- git02.txt
+
+
+####################分支合并 删除 创建操作##################
+#1. 分支的创建  一般用于 多人协作 项目开发时候 会建立新的分支 
+git checkout -b leaf01
+# 2. 查看 分支 
+ git branch
+#3.分支合并  多人协作 项目开发时候 会建立新的分支 提交到自己的分支 后再和主分支合并
+git merge leaf01
+#4.重命名 分支
+git branch -m leaf01 leaf02
+#5.删除 分支 (注意：需要切换到主分支master分支上才能删除成功)
+ git branch -d leaf02
+
